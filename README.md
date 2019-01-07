@@ -1,7 +1,7 @@
 ## 校园闲置物品交易平台
 
 ### _验证格式_   
-&nbsp http://localhost:8080/user_login.action?user.username=1   
+&nbsp; http://localhost:8080/user_login.action?user.username=1   
 
 ### _需要放在一起_    
 >>> @Resource(name = "communityService")   
