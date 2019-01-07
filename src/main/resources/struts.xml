@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <constant name="struts.enable.DynamicMethodInvocation" value="true"/>
+    <constant name="struts.devMode" value="true"/>
+    <constant name="struts.ui.theme" value="simple"/>
+    <constant name="struts.multipart.maxSize" value="100000000"/>
+    <constant name="struts.serve.static.browserCache" value="false"/>
+    <constant name="struts.multipart.saveDir" value="/tmp"/>
+    <package name="med" namespace="/" extends="json-default">
+        <action name="user_*" class="userAction" method="{1}">
+            <result name="LOGIN_SUCCESS" type="json">
+                <param name="root">result</param>
+                <param name="excludeNullProperties">true</param>
+                <param name="excludeProperties">SUCCESS</param>
+            </result>
+            <result name="GET_USER_SUCCESS" type="json">
+                <param name="root">userEntities</param>
+                <param name="excludeNullProperties">true</param>
+                <param name="excludeProperties">SUCCESS</param>
+            </result>
+        </action>
+        <action name="community_*" class="communityAction" method="{1}">
+            <result name="LOGIN_SUCCESS" type="json">
+                <param name="root">result</param>
+                <param name="excludeNullProperties">true</param>
+                <param name="excludeProperties">SUCCESS</param>
+            </result>
+            <result name="GET_COMMUNITY_SUCCESS" type="json">
+                <param name="root">communityEntities</param>
+                <param name="excludeNullProperties">true</param>
+                <param name="excludeProperties">SUCCESS</param>
+            </result>
+        </action>
+        <action name="publish_*" class="publishAction" method="{1}">
+            <result name="LOGIN_SUCCESS" type="json">
+                <param name="root">result</param>
+                <param name="excludeNullProperties">true</param>
+                <param name="excludeProperties">SUCCESS</param>
+            </result>
+            <result name="GET_PUBLISH_SUCCESS" type="json">
+                <param name="root">publishEntities</param>
+                <param name="excludeNullProperties">true</param>
+                <param name="excludeProperties">SUCCESS</param>
+            </result>
+        </action>
+        <action name="order_*" class="orderAction" method="{1}">
+            <result name="LOGIN_SUCCESS" type="json">
+                <param name="root">result</param>
+                <param name="excludeNullProperties">true</param>
+                <param name="excludeProperties">SUCCESS</param>
+            </result>
+            <result name="GET_ORDER_SUCCESS" type="json">
+                <param name="root">orderEntities</param>
+                <param name="excludeNullProperties">true</param>
+                <param name="excludeProperties">SUCCESS</param>
+            </result>
+        </action>
+        <action name="purchase_*" class="purchaseAction" method="{1}">
+            <result name="LOGIN_SUCCESS" type="json">
+                <param name="root">result</param>
+                <param name="excludeNullProperties">true</param>
+                <param name="excludeProperties">SUCCESS</param>
+            </result>
+            <result name="GET_PURCHASE_SUCCESS" type="json">
+                <param name="root">purchaseEntities</param>
+                <param name="excludeNullProperties">true</param>
+                <param name="excludeProperties">SUCCESS</param>
+            </result>
+        </action>
+    </package>
+</struts>

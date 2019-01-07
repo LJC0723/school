@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Struts2 2.3">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/lib/Struts2 2.3.30" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/lib/Struts2 2.3.30" recursive="false" />
+  </library>
+</component>

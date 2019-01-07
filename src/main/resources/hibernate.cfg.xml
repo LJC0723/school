@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="connection.url">jdbc:mysql://localhost:3306/school</property>
+    <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+      <mapping class="org.jncc.entity.UserEntity"/>
+      <mapping resource="org/jncc/entity/CommunityEntity.hbm.xml"/>
+      <mapping class="org.jncc.entity.CommunityEntity"/>
+      <mapping resource="org/jncc/entity/OrderEntity.hbm.xml"/>
+      <mapping class="org.jncc.entity.OrderEntity"/>
+      <mapping class="org.jncc.entity.PublisheEntity"/>
+      <mapping resource="org/jncc/entity/PublisheEntity.hbm.xml"/>
+      <mapping class="org.jncc.entity.PurchaseEntity"/>
+      <mapping resource="org/jncc/entity/PurchaseEntity.hbm.xml"/>
+      <mapping resource="org/jncc/entity/UserEntity.hbm.xml"/>
+      <mapping class="org.jncc.entity.PublishEntity"/>
+      <mapping resource="org/jncc/entity/PublishEntity.hbm.xml"/>
+      <mapping class="org.jncc.entity.OrdersEntity"/>
+      <mapping resource="org/jncc/entity/OrdersEntity.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

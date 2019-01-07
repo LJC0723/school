@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="org.jncc.entity.OrdersEntity" table="orders" schema="school">
+        <id name="orderId">
+            <column name="order_id" sql-type="int(11)"/>
+        </id>
+        <property name="communityId">
+            <column name="community_id" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="publisherId">
+            <column name="publisher_id" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="customerId">
+            <column name="customer_id" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="communityNumber">
+            <column name="community_number" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="orderSum">
+            <column name="order_sum" sql-type="double" precision="-1" not-null="true"/>
+        </property>
+        <property name="orderState">
+            <column name="order_state" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="orderTime">
+            <column name="order_time" sql-type="datetime" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

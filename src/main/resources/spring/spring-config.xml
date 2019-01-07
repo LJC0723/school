@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <context:property-placeholder location="classpath:spring/dbcp2.properties"/>
+    <context:component-scan base-package="org.jncc"></context:component-scan>
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+        <property name="username" value="${connection.username}"></property>
+        <property name="password" value="${connection.password}"></property>
+        <property name="url" value="${connection.url}"></property>
+        <property name="driverClassName" value="${connection.driverClassName}"></property>
+        <!-- <property name="initialSize" value="${connection.initialSize}"></property> -->
+        <property name="maxIdle" value="${connection.maxIdle}"></property>
+        <property name="minIdle" value="${connection.minIdle}"></property>
+        <property name="initialSize" value="${connection.initialSize}"></property>
+        <property name="maxTotal" value="${connection.maxTotal}"></property>
+        <property name="removeAbandonedTimeout" value="${connection.removeAbandonedTimeout}"></property>
+        <property name="logAbandoned" value="${connection.logAbandoned}"></property>
+    </bean>
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="namedParameterJdbcTemplate"
+          class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+        <constructor-arg ref="dataSource" />
+    </bean>
+
+    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!---事务通知:增强事务-->
+    <tx:advice id="txAdvice" transaction-manager="txManager">
+        <tx:attributes>
+            <tx:method name="find*" propagation="NOT_SUPPORTED"
+                       read-only="true" />
+            <tx:method name="*" propagation="REQUIRED" />
+        </tx:attributes>
+    </tx:advice>
+    <tx:annotation-driven transaction-manager="txManager"/>
+    <!-- 切面： 将切入点与通知关联-->
+    <aop:config proxy-target-class="true">
+        <aop:pointcut id="personServiceOperation"
+                      expression="execution(* org.jncc..*(..))" />
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="personServiceOperation"/>
+    </aop:config>
+
+</beans>

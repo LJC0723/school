@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="org.jncc.entity.CommunityEntity" table="community" schema="school">
+        <id name="goodsId">
+            <column name="goods_id" sql-type="int(11)"/>
+        </id>
+        <property name="goodsName">
+            <column name="goods_name" sql-type="varchar(64)" length="64" not-null="true"/>
+        </property>
+        <property name="goodsPrice">
+            <column name="goods_price" sql-type="double" precision="-1" not-null="true"/>
+        </property>
+        <property name="goodsNumber">
+            <column name="goods_number" sql-type="int(11)" not-null="true"/>
+        </property>
+        <property name="goodsPublisher">
+            <column name="goods_publisher" sql-type="varchar(64)" length="64" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>
